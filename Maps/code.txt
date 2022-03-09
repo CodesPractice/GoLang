@@ -1,0 +1,107 @@
+	empSal := make(map[string]int)
+	fmt.Print(empSal)
+
+	------------------------
+
+	empSal := make(map[string]int)
+	empSal["Andrew"] = 120000
+	empSal["Dinushika"] = 50000
+	empSal["Menaka"] = 90000
+
+	fmt.Println("Map content is : ", empSal)
+
+	----------------------
+
+		empSal := map[string]int{
+		"Andrew":    230000,
+		"Dinushika": 90000,
+	}
+	empSal["Menaka"] = 140000
+	fmt.Println(empSal)
+
+
+	-----------------------
+		empSal := map[string]int{
+		"Andrew":    120000,
+		"Dinushika": 70000,
+	}
+	empSal["Menaka"] = 90000
+
+	emp := "Andw"
+	sal := empSal[emp]
+
+	fmt.Printf("Salary of the %s is %d", emp, sal)
+
+	------------------------------
+
+		empSal := map[string]int{
+		"Andrew":    200000,
+		"Dinushika": 90000,
+	}
+
+	newEmp := "Andrew"
+	value, ok := empSal[newEmp]
+	if ok {
+		fmt.Printf("The salary of %s is %d ", newEmp, value)
+		return
+	}
+	fmt.Print("Employee is not found !")
+
+	--------------------
+
+	
+	empSal := map[string]int{
+		"Andrew":    120000,
+		"Dinushika": 80000,
+		"Menaka":    90000,
+	}
+
+	for key, val := range empSal {
+		fmt.Printf(" %s \t %d \n", key, val)
+	}
+	-----------------------
+		empSal := map[string]int{
+		"Ann":  120000,
+		"Joy":  325000,
+		"Mark": 90000,
+	}
+	empSal["Noah"] = 121000
+
+	fmt.Print("Map befor deletion \n", empSal)
+	delete(empSal, "Mark")
+	fmt.Print("\n\nMap after deletion \n", empSal)
+	delete(empSal, "Andy")
+
+	---------------------
+
+	type employee struct {
+	sal     int
+	country string
+}
+
+func main() {
+
+	emp1 := employee{
+		sal:     10000,
+		country: "Sri Lanka",
+	}
+
+	emp2 := employee{
+		sal:     50000,
+		country: "Oman",
+	}
+
+	emp3 := employee{
+		sal:     17000,
+		country: "USA",
+	}
+
+	empData := map[string]employee{
+		"Andy": emp1,
+		"Joy":  emp2,
+		"Ann":  emp3,
+	}
+
+	for name, infor := range empData {
+		fmt.Printf("\n%s is live in %s & salaray is %d", name, infor.country, infor.sal)
+	}
