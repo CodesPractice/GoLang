@@ -1,0 +1,173 @@
+func printBytes(s string) {
+	fmt.Printf("Bytes : ")
+	for i := 0; i < len(s); i++ {
+		fmt.Printf("%x ", s[i])
+	}
+}
+
+func main() {
+	name := "Hello World"
+	fmt.Printf("String : %s\n", name)
+	printBytes(name)
+
+}
+
+-------------------------
+
+package main
+
+import "fmt"
+
+func printBytes(s string) {
+	fmt.Println("Bytes : ")
+	for _, b := range s {
+		fmt.Printf("%x ", b)
+	}
+}
+
+func printChar(s string) {
+	fmt.Println("\nCharacters")
+	runes := []rune(s)
+	for i := 0; i < len(runes); i++ {
+		fmt.Printf("%c ", runes[i])
+	}
+}
+
+func main() {
+	name := "Señor" //"Hello World"
+	fmt.Println("String : ", name)
+	printBytes(name)
+	printChar(name)
+
+}
+
+
+----------------------------------
+
+package main
+
+import "fmt"
+
+func printCharAndByte(s string) {
+	for i, v := range s {
+		fmt.Printf("%c starts at byte %d \n", v, i)
+	}
+}
+
+func main() {
+	name := "Señor"
+	printCharAndByte(name)
+}
+
+-------------------------------
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	byteSlice := []byte{0x43, 0x61, 0x66, 0xC3, 0xA9}
+	str := string(byteSlice)
+	fmt.Println(str)
+}
+
+-----------------------------
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	runeSlice := []rune{0x0053, 0x0065, 0x00f1, 0x006f, 0x0072}
+	str := string(runeSlice)
+	fmt.Println(str)
+}
+
+---------------------------
+package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func printLengthAndByes(s string) {
+	//runeslice := []rune(s)
+	fmt.Printf("String : \t%s \nLength : \t%d \nNo of Bytes : \t%d \n", s, utf8.RuneCountInString(s), len(s))
+}
+
+func main() {
+	str1 := "Señor"
+	printLengthAndByes(str1)
+	str2 := "Andrew"
+	printLengthAndByes(str2)
+}
+
+--------------------------------------------
+package main
+
+import "fmt"
+
+func compareStrings(s1, s2 string) {
+	if s1 == s2 {
+		fmt.Printf("%s and %s are equal\n", s1, s2)
+		return
+	}
+	fmt.Printf("%s and %s are not equal", s1, s2)
+}
+
+func main() {
+	string1 := "Go"
+	string2 := "Go"
+	compareStrings(string1, string2)
+
+	string3 := "Hello"
+	string4 := "World"
+	compareStrings(string3, string4)
+
+}
+------------------------------
+package main
+
+import "fmt"
+
+func main() {
+	str1 := "Hello"
+	str2 := "Go"
+	str3 := "Playground !"
+
+	//String concatenation using + operator
+	result1 := str1 + " " + str2 + " " + str2
+
+	//String concatenation using Sprintf
+	result2 := fmt.Sprintf("%s %s %s", str1, str2, str3)
+
+	
+	fmt.Print(result1)
+	fmt.Println()
+	fmt.Print(result2)
+}
+
+
+------------------------
+
+package main
+
+import (
+	"fmt"
+)
+
+func mutate(s string) string {
+	s[0] = 'a' //---- Gives compilation error of -> cannot assign to s[0] (value of type byte)
+	//any valid unicode character within single quote is a rune
+	return s
+}
+func main() {
+	h := "hello"
+	fmt.Println(mutate(h))
+}
+
