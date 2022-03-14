@@ -1,0 +1,31 @@
+//---------- Exported structs and fields ------------
+
+// if struct types and structs fields start with a capital letter,
+//then thosr are exported type and it can be accessed from other packages.
+
+/*  Floder structure
+[struct]
+	- go.mod
+	- main.go
+	- [computer]
+		- spec.go  // exported fields and struct kept in this package computer
+
+*/
+
+package main
+
+import (
+	"fmt"
+	"struct/computer" //import custome package computer
+)
+
+func main() {
+	spec := computer.Spec{ // access Spec struct in computer package from main package
+		Make:  "Apple", // exported fields are available
+		Price: 60000,
+		// model : "Mac Mini" // Trying to access unexported field may complain an error
+	}
+
+	fmt.Println("Make : ", spec.Make)
+	fmt.Println("Price : ", spec.Price)
+}
