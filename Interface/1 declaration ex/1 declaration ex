@@ -1,0 +1,36 @@
+//---------- Declaring and implementing an interface -----------
+
+package main
+
+import "fmt"
+
+// VowelFinder is the interface
+// It has a method FindVowel wich returns a rune slice
+// rune is a builtin type, represents Unicode code point
+type VowelFinder interface {
+	FindVowel() []rune
+}
+
+// non-typed struct,
+// receviers accepts types only if its definition is in the same package
+type MyString string
+
+// ms - value receiver of type MyString
+func (ms MyString) FindVowel() []rune {
+	var vowel []rune
+	for _, rune := range ms {
+		if rune == 'a' || rune == 'e' || rune == 'i' || rune == 'o' || rune == 'u' {
+			vowel = append(vowel, rune)
+		}
+	}
+	return vowel
+}
+
+func main() {
+	name := MyString("Sam Anderson")
+	var v VowelFinder
+	v = name
+	fmt.Printf("Vowels are : %c", v.FindVowel())
+}
+
+//Vowels are : [a e o]
