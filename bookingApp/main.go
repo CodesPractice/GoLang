@@ -92,6 +92,4 @@ func greetUsers(conf string, confTicks int, remainingTics uint) {
 	fmt.Println("Get your tickets here to attend", conf)
 }
 
-// go run  main.go helper.go
-// or
-// go run .
+
